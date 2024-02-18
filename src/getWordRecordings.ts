@@ -60,7 +60,7 @@ while (true) {
   const answer = await select({
     message: "Which was it?",
     choices: pair.map((option) => ({
-      name: `${option.french} (${option.pronunciation})`,
+      name: wordToString(option),
       value: option,
     })),
   });
@@ -68,6 +68,10 @@ while (true) {
   if (answer.french === wordInfo.french) {
     console.log("Correct!");
   } else {
-    console.log(`Incorrect! It was ${wordInfo.french}\n`);
+    console.log(`Incorrect! It was ${wordToString(wordInfo)}\n`);
   }
+}
+
+function wordToString(option: Word): string {
+  return `${option.french} (${option.pronunciation})`;
 }
