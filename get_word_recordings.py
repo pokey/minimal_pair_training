@@ -1,20 +1,39 @@
+import re
+import sys
+from dataclasses import dataclass
+
 import requests
 
-# Set up the API endpoint
+# First command-line parameter is word to search for
+word = sys.argv[1]
+
+if not word:
+    print("Please provide a word to search for")
+    sys.exit(1)
+
 url = "https://commons.wikimedia.org/w/api.php"
 
 # Set up the query parameters, unescaping where necessary
 params = {
     "action": "query",
-    "list": "search",
-    "srlimit": 100,
-    "srsearch": "intitle:/^LL-Q150 (fra)-[^ ]+-aller\\.wav$",
-    "utf8": True,
-    "srnamespace": 6,
-    "srwhat": "text",
-    "srprop": "url",
     "format": "json",
+    "prop": "imageinfo|pageprops",
+    "generator": "search",
+    "iiprop": "url|extmetadata",
+    "iimetadataversion": "1",
+    "iiextmetadatafilter": "Categories",
+    "gsrsearch": f"intitle:/LL-Q150.*-{word}\\.wav/",
+    "gsrnamespace": "6",
+    "gsrlimit": "50",
+    "gsrwhat": "text",
 }
+
+
+@dataclass
+class Recording:
+    page_id: int
+    title: str
+    url: str
 
 
 # Make the GET request
@@ -26,10 +45,11 @@ if response.status_code == 200:
     data = response.json()
 
     # Extract and print the titles from the search results
-    for item in data.get("query", {}).get("search", []):
-        title = item.get("title")
-        if not title.endswith("-aller.wav"):
-            continue
-        print(title)
+    results = [
+        Recording(page["pageid"], page["title"], page["imageinfo"][0]["url"])
+        for page in data["query"]["pages"].values()
+        if re.match(rf"^File:LL-Q150 \(fra\)-[^-]+-{word}\.wav$", page["title"])
+    ]
+    print("\n".join([result.title for result in results]))
 else:
     print(f"Failed to fetch data: HTTP {response.status_code}")
