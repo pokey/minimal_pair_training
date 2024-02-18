@@ -10,6 +10,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^20.11.19"
+    "@types/node": "^20.11.19",
+    "@types/play-sound": "^1.1.2"
+  },
+  "dependencies": {
+    "@inquirer/confirm": "^3.0.0",
+    "@inquirer/prompts": "^4.0.0",
+    "play-sound": "^1.1.6"
   }
 }

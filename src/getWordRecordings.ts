@@ -1,12 +1,73 @@
+import { select } from "@inquirer/prompts";
+import { createWriteStream } from "fs";
+import { unlink } from "fs/promises";
+import playSound from "play-sound";
+import { Readable } from "stream";
+import { finished } from "stream/promises";
+import { minimalPairs } from "./allMinimalPairs";
 import { getWordRecordingUrls } from "./getWordRecordingUrls"; // Adjust the import path as necessary
+import { choice } from "./random";
 
-const word: string = process.argv[2];
+import type { ReadableStream } from "node:stream/web";
 
-if (!word) {
-  console.log("Please provide a word to search for");
-  process.exit(1);
+const pairs = await select({
+  message: "Pick a pair",
+  choices: Object.entries(minimalPairs).map(([name, pairs]) => ({
+    name,
+    value: pairs,
+  })),
+});
+
+while (true) {
+  // Pick a random pair
+  const pair = choice(pairs);
+
+  // Randomly pick one of the words in the pair
+  const wordInfo = choice(pair);
+  const word = wordInfo.french;
+
+  const recordings = await getWordRecordingUrls(word);
+
+  if (recordings.length === 0) {
+    console.log("No recordings found!");
+    continue;
+  }
+
+  // Pick a random recording
+  const recording = choice(recordings).url;
+
+  // Download to temp file using fetch
+  const response = await fetch(recording);
+
+  const path = "/tmp/minimal-pair-recording.wav";
+  // Remove the file if it already exists
+  try {
+    await unlink(path);
+  } catch (e) {
+    if (e.code !== "ENOENT") {
+      throw e;
+    }
+  }
+  const fileStream = createWriteStream(path, { flags: "wx" });
+  await finished(
+    Readable.fromWeb(response.body as ReadableStream<Uint8Array>).pipe(
+      fileStream
+    )
+  );
+
+  const player = playSound();
+  player.play(path);
+  const answer = await select({
+    message: "Which was it?",
+    choices: pair.map((option) => ({
+      name: `${option.french} (${option.pronunciation})`,
+      value: option,
+    })),
+  });
+
+  if (answer.french === wordInfo.french) {
+    console.log("Correct!");
+  } else {
+    console.log(`Incorrect! It was ${wordInfo.french}\n`);
+  }
 }
-
-const results = await getWordRecordingUrls(word);
-const titles = results.map((result) => result.title).join("\n");
-console.log(titles);
