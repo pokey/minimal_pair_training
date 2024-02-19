@@ -15,6 +15,8 @@ import type { ReadableStream } from "node:stream/web";
 const player = playSound();
 const keys = ["j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v"];
 
+class NoRecordingsError extends Error {}
+
 while (true) {
   const pairs: MinimalPair[] | "quit" = await prompt({
     message: "Pick a pair",
@@ -35,8 +37,6 @@ while (true) {
   if (pairs === "quit") {
     process.exit(0);
   }
-
-  class NoRecordingsError extends Error {}
 
   let successes = 0;
   let total = 0;
