@@ -8,46 +8,146 @@ export type MinimalPair = [Word, Word];
 // From http://minimalpairs.net/en/fr
 // (via https://web.archive.org/web/20200804073656/minimalpairs.net/en/fr)
 export const minimalPairs: Record<string, MinimalPair[]> = {
-  "e-ɛ": [
+  "i-e": [
     [
-      { french: "ait", pronunciation: "/ɛ/" },
-      { french: "et", pronunciation: "/e/" },
-    ],
-    [
-      { french: "allait", pronunciation: "/alɛ/" },
-      { french: "aller", pronunciation: "/ale/" },
-    ],
-    [
-      { french: "avait", pronunciation: "/avɛ/" },
+      { french: "avis", pronunciation: "/avi/" },
       { french: "avez", pronunciation: "/ave/" },
     ],
     [
-      { french: "cachet", pronunciation: "/kaʃɛ/" },
+      { french: "cri", pronunciation: "/kʁi/" },
+      { french: "crée", pronunciation: "/kʁe/" },
+    ],
+    [
+      { french: "ni", pronunciation: "/ni/" },
+      { french: "nez", pronunciation: "/ne/" },
+    ],
+  ],
+
+  "i-y": [
+    [
+      { french: "bit", pronunciation: "/bit/" },
+      { french: "but", pronunciation: "/byt/" },
+    ],
+    [
+      { french: "cri", pronunciation: "/kʁi/" },
+      { french: "cru", pronunciation: "/kʁy/" },
+    ],
+    [
+      { french: "die", pronunciation: "/di/" },
+      { french: "du", pronunciation: "/dy/" },
+    ],
+    [
+      { french: "lit", pronunciation: "/li/" },
+      { french: "lu", pronunciation: "/ly/" },
+    ],
+    [
+      { french: "ni", pronunciation: "/ni/" },
+      { french: "nu", pronunciation: "/ny/" },
+    ],
+    [
+      { french: "pis", pronunciation: "/pi/" },
+      { french: "pu", pronunciation: "/py/" },
+    ],
+    [
+      { french: "si", pronunciation: "/si/" },
+      { french: "su", pronunciation: "/sy/" },
+    ],
+  ],
+
+  "e-ɛ": [
+    [
+      { french: "et", pronunciation: "/e/" },
+      { french: "ait", pronunciation: "/ɛ/" },
+    ],
+    [
+      { french: "aller", pronunciation: "/ale/" },
+      { french: "allait", pronunciation: "/alɛ/" },
+    ],
+    [
+      { french: "avez", pronunciation: "/ave/" },
+      { french: "avait", pronunciation: "/avɛ/" },
+    ],
+    [
       { french: "cacher", pronunciation: "/kaʃe/" },
+      { french: "cachet", pronunciation: "/kaʃɛ/" },
     ],
     [
-      { french: "cotait", pronunciation: "/kɔtɛ/" },
       { french: "coté", pronunciation: "/kɔte/" },
+      { french: "cotait", pronunciation: "/kɔtɛ/" },
     ],
-    // [
-    //   { french: "jet", pronunciation: "/ʒɛ/" },
-    //   { french: "g", pronunciation: "/ʒe/" },
-    // ],
-    // [
-    //   { french: "paix", pronunciation: "/pɛ/" },
-    //   { french: "p", pronunciation: "/pe/" },
-    // ],
-    // [
-    //   { french: "sais", pronunciation: "/sɛ/" },
-    //   { french: "c", pronunciation: "/se/" },
-    // ],
     [
-      { french: "volet", pronunciation: "/vɔlɛ/" },
       { french: "voler", pronunciation: "/vɔle/" },
+      { french: "volet", pronunciation: "/vɔlɛ/" },
     ],
     [
-      { french: "était", pronunciation: "/etɛ/" },
       { french: "été", pronunciation: "/ete/" },
+      { french: "était", pronunciation: "/etɛ/" },
+    ],
+  ],
+
+  "y-ø": [
+    [
+      { french: "su", pronunciation: "/sy/" },
+      { french: "ceux", pronunciation: "/sø/" },
+    ],
+    [
+      { french: "cru", pronunciation: "/kʁy/" },
+      { french: "creux", pronunciation: "/kʁø/" },
+    ],
+    [
+      { french: "du", pronunciation: "/dy/" },
+      { french: "deux", pronunciation: "/dø/" },
+    ],
+    [
+      { french: "fut", pronunciation: "/fy/" },
+      { french: "feu", pronunciation: "/fø/" },
+    ],
+    [
+      { french: "jus", pronunciation: "/ʒy/" },
+      { french: "jeu", pronunciation: "/ʒø/" },
+    ],
+    [
+      { french: "pu", pronunciation: "/py/" },
+      { french: "peu", pronunciation: "/pø/" },
+    ],
+    [
+      { french: "vue", pronunciation: "/vy/" },
+      { french: "veut", pronunciation: "/vø/" },
+    ],
+  ],
+
+  "y-u": [
+    [
+      { french: "du", pronunciation: "/dy/" },
+      { french: "doux", pronunciation: "/du/" },
+    ],
+    [
+      { french: "flux", pronunciation: "/fly/" },
+      { french: "flou", pronunciation: "/flu/" },
+    ],
+    [
+      { french: "fur", pronunciation: "/fyʁ/" },
+      { french: "four", pronunciation: "/fuʁ/" },
+    ],
+    [
+      { french: "fut", pronunciation: "/fy/" },
+      { french: "fou", pronunciation: "/fu/" },
+    ],
+    [
+      { french: "jus", pronunciation: "/ʒy/" },
+      { french: "joue", pronunciation: "/ʒu/" },
+    ],
+    [
+      { french: "lu", pronunciation: "/ly/" },
+      { french: "loup", pronunciation: "/lu/" },
+    ],
+    [
+      { french: "nu", pronunciation: "/ny/" },
+      { french: "nous", pronunciation: "/nu/" },
+    ],
+    [
+      { french: "pure", pronunciation: "/pyʁ/" },
+      { french: "pour", pronunciation: "/puʁ/" },
     ],
   ],
 
@@ -57,15 +157,8 @@ export const minimalPairs: Record<string, MinimalPair[]> = {
       { french: "jeune", pronunciation: "/ʒœn/" },
     ],
     [
-      { french: "veulent", pronunciation: "/vœl/" },
       { french: "veule", pronunciation: "/vøl/" },
-    ],
-  ],
-
-  "ø-ɔ": [
-    [
-      { french: "neutre", pronunciation: "/nøtʁ/" },
-      { french: "notre", pronunciation: "/nɔtʁ/" },
+      { french: "veulent", pronunciation: "/vœl/" },
     ],
   ],
 
@@ -79,28 +172,107 @@ export const minimalPairs: Record<string, MinimalPair[]> = {
       { french: "or", pronunciation: "/ɔʁ/" },
     ],
     [
-      { french: "lors", pronunciation: "/lɔʁ/" },
       { french: "leur", pronunciation: "/lœʁ/" },
+      { french: "lors", pronunciation: "/lɔʁ/" },
     ],
     [
       { french: "mœurs", pronunciation: "/mœʁ/" },
       { french: "mort", pronunciation: "/mɔʁ/" },
     ],
     [
-      { french: "port", pronunciation: "/pɔʁ/" },
       { french: "peur", pronunciation: "/pœʁ/" },
+      { french: "port", pronunciation: "/pɔʁ/" },
     ],
     [
       { french: "seul", pronunciation: "/sœl/" },
       { french: "sol", pronunciation: "/sɔl/" },
     ],
     [
-      { french: "sort", pronunciation: "/sɔʁ/" },
       { french: "sœur", pronunciation: "/sœʁ/" },
+      { french: "sort", pronunciation: "/sɔʁ/" },
     ],
     [
       { french: "veulent", pronunciation: "/vœl/" },
       { french: "vol", pronunciation: "/vɔl/" },
+    ],
+  ],
+
+  "o-ɔ": [
+    [
+      { french: "Côme", pronunciation: "/kom/" },
+      { french: "comme", pronunciation: "/kɔm/" },
+    ],
+    [
+      { french: "Beauce", pronunciation: "/bos/" },
+      { french: "bosse", pronunciation: "/bɔs/" },
+    ],
+  ],
+
+  "ɛ̃-œ̃": [
+    [
+      { french: "brin", pronunciation: "/bʁɛ̃/" },
+      { french: "brun", pronunciation: "/bʁœ̃/" },
+    ],
+  ],
+
+  "ɛ̃-ɑ̃": [
+    [
+      { french: "craint", pronunciation: "/kʁɛ̃/" },
+      { french: "cran", pronunciation: "/kʁɑ̃/" },
+    ],
+    [
+      { french: "frein", pronunciation: "/fʁɛ̃/" },
+      { french: "franc", pronunciation: "/fʁɑ̃/" },
+    ],
+    [
+      { french: "grand", pronunciation: "/ɡʁɑ̃/" },
+      { french: "grain", pronunciation: "/ɡʁɛ̃/" },
+    ],
+    [
+      { french: "klein", pronunciation: "/klɛ̃/" },
+      { french: "clan", pronunciation: "/klɑ̃/" },
+    ],
+    [
+      { french: "lent", pronunciation: "/lɑ̃/" },
+      { french: "lin", pronunciation: "/lɛ̃/" },
+    ],
+    [
+      { french: "plein", pronunciation: "/plɛ̃/" },
+      { french: "plan", pronunciation: "/plɑ̃/" },
+    ],
+    [
+      { french: "sein", pronunciation: "/sɛ̃/" },
+      { french: "cent", pronunciation: "/sɑ̃/" },
+    ],
+    [
+      { french: "temps", pronunciation: "/tɑ̃/" },
+      { french: "teint", pronunciation: "/tɛ̃/" },
+    ],
+    [
+      { french: "vent", pronunciation: "/vɑ̃/" },
+      { french: "vin", pronunciation: "/vɛ̃/" },
+    ],
+    [
+      { french: "écrin", pronunciation: "/ekʁɛ̃/" },
+      { french: "écran", pronunciation: "/ekʁɑ̃/" },
+    ],
+  ],
+
+  "œ̃-ɑ̃": [
+    [
+      { french: "comment", pronunciation: "/kɔmɑ̃/" },
+      { french: "commun", pronunciation: "/kɔmœ̃/" },
+    ],
+    [
+      { french: "défunt", pronunciation: "/defœ̃/" },
+      { french: "défend", pronunciation: "/defɑ̃/" },
+    ],
+  ],
+
+  "ɥ-w": [
+    [
+      { french: "lui", pronunciation: "/lɥi/" },
+      { french: "louis", pronunciation: "/lwi/" },
     ],
   ],
 };

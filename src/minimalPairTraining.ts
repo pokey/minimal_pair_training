@@ -13,7 +13,7 @@ import prompt from "inquirer-interactive-list-prompt";
 import type { ReadableStream } from "node:stream/web";
 
 const player = playSound();
-const keys = ["j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v"];
+const keys = ["j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u", "v"];
 
 class NoRecordingsError extends Error {}
 
@@ -22,7 +22,10 @@ while (true) {
     message: "Pick a pair",
     choices: [
       ...Object.entries(minimalPairs).map(([name, pairs], i) => ({
-        name,
+        name: name
+          .split("-")
+          .map((s) => chalk.cyan(`/${s}/`))
+          .join(" vs "),
         value: pairs,
         key: keys[i],
       })),
@@ -68,7 +71,7 @@ while (true) {
 
     player.play(correctWord.path);
 
-    const chosenWord: WordWithRecording | "done" = await prompt({
+    const chosenWord: WordWithRecording | "home" | "quit" = await prompt({
       message: "Which was it?",
       choices: [
         ...wordsWithRecordings.map((option, i) => ({
@@ -85,15 +88,24 @@ while (true) {
           },
         },
         {
-          name: "Done",
-          value: "done",
-          key: "d",
+          name: "Home",
+          value: "home",
+          key: "h",
+        },
+        {
+          name: "Quit",
+          value: "quit",
+          key: "q",
         },
       ],
     });
 
-    if (chosenWord === "done") {
+    if (chosenWord === "home") {
       break;
+    }
+
+    if (chosenWord === "quit") {
+      process.exit(0);
     }
 
     total += 1;
@@ -122,7 +134,7 @@ while (true) {
     );
 
     if (!success) {
-      await prompt({
+      const choice: "continue" | "home" | "quit" = await prompt({
         message: "Replay?",
         default: chosenWord,
         choices: [
@@ -136,11 +148,29 @@ while (true) {
           })),
           {
             name: "Continue",
-            value: "done",
+            value: "continue",
             key: "l",
+          },
+          {
+            name: "Home",
+            value: "home",
+            key: "h",
+          },
+          {
+            name: "Quit",
+            value: "quit",
+            key: "q",
           },
         ],
       });
+
+      if (choice === "home") {
+        break;
+      }
+
+      if (choice === "quit") {
+        process.exit(0);
+      }
 
       console.log("\n");
     }
