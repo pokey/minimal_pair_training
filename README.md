@@ -19,5 +19,5 @@ bun src/minimalPairTraining.ts
 ## Acknowledgements
 
 - Minimal pairs come from http://minimalpairs.net/en/fr
-  ([via the internet archive](https://web.archive.org/web/20200804073656/minimalpairs.net/en/fr))
+  ([via the internet archive](https://web.archive.org/web/20200804073656/minimalpairs.net/en/fr)). See [this answer](https://linguistics.stackexchange.com/a/11634) for more on how they were generated.
 - Recordings come from [Wikimedia commons](https://commons.wikimedia.org)
