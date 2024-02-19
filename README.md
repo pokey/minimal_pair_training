@@ -2,6 +2,8 @@
 
 CLI to do [minimal pair training](https://en.wikipedia.org/wiki/Minimal_pair#Teaching), for learning how to pronounce another language. This repository is currently designed for learning French, but could easily be adapted to other languages.
 
+![Screenshot of the program](./screenshot.png)
+
 ## Installation
 
 ```sh
