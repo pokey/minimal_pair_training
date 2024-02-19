@@ -1,4 +1,3 @@
-import { select } from "@inquirer/prompts";
 import { createWriteStream } from "fs";
 import { unlink } from "fs/promises";
 import playSound from "play-sound";
@@ -8,10 +7,10 @@ import { MinimalPair, Word, minimalPairs } from "./allMinimalPairs";
 import { getWordRecordingUrls } from "./getWordRecordingUrls"; // Adjust the import path as necessary
 import { choice } from "./random";
 
-import type { ReadableStream } from "node:stream/web";
-import prompt from "inquirer-interactive-list-prompt";
-import chalk from "chalk";
 import binomialTest from "@stdlib/stats-binomial-test";
+import chalk from "chalk";
+import prompt from "inquirer-interactive-list-prompt";
+import type { ReadableStream } from "node:stream/web";
 
 const player = playSound();
 const keys = ["j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v"];
