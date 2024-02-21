@@ -225,16 +225,16 @@ export const minimalPairs: Record<string, MinimalPair[]> = {
       { french: "franc", pronunciation: "/fʁɑ̃/" },
     ],
     [
-      { french: "grand", pronunciation: "/ɡʁɑ̃/" },
       { french: "grain", pronunciation: "/ɡʁɛ̃/" },
+      { french: "grand", pronunciation: "/ɡʁɑ̃/" },
     ],
     [
       { french: "klein", pronunciation: "/klɛ̃/" },
       { french: "clan", pronunciation: "/klɑ̃/" },
     ],
     [
-      { french: "lent", pronunciation: "/lɑ̃/" },
       { french: "lin", pronunciation: "/lɛ̃/" },
+      { french: "lent", pronunciation: "/lɑ̃/" },
     ],
     [
       { french: "plein", pronunciation: "/plɛ̃/" },
@@ -245,12 +245,12 @@ export const minimalPairs: Record<string, MinimalPair[]> = {
       { french: "cent", pronunciation: "/sɑ̃/" },
     ],
     [
-      { french: "temps", pronunciation: "/tɑ̃/" },
       { french: "teint", pronunciation: "/tɛ̃/" },
+      { french: "temps", pronunciation: "/tɑ̃/" },
     ],
     [
-      { french: "vent", pronunciation: "/vɑ̃/" },
       { french: "vin", pronunciation: "/vɛ̃/" },
+      { french: "vent", pronunciation: "/vɑ̃/" },
     ],
     [
       { french: "écrin", pronunciation: "/ekʁɛ̃/" },
@@ -260,8 +260,8 @@ export const minimalPairs: Record<string, MinimalPair[]> = {
 
   "œ̃-ɑ̃": [
     [
-      { french: "comment", pronunciation: "/kɔmɑ̃/" },
       { french: "commun", pronunciation: "/kɔmœ̃/" },
+      { french: "comment", pronunciation: "/kɔmɑ̃/" },
     ],
     [
       { french: "défunt", pronunciation: "/defœ̃/" },
